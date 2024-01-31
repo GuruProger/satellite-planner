@@ -1,0 +1,115 @@
+/* Пользовательский шрифт */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/* Базовый сброс */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    /* Фон = градиент + комбинация изображения */
+    background: linear-gradient(rgb(31, 39, 57), rgb(48, 92, 119));
+}
+
+
+
+h1 {
+    font-size: 1.5em;
+    color: #4f96c4;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 20px;
+    white-space: normal;
+}
+
+/* Стили формы */
+form {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+form fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /* Стековые fieldset'ы один над другим */
+    position: relative;
+}
+
+/* Скрыть все, кроме первого fieldset'а */
+form fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/* Вводы */
+form input, form textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+/* Кнопка "Далее" */
+button {
+    width: 100px;
+    background: #004BFF99;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Кнопки */
+form .action-button {
+    width: 100px;
+    background: #004BFF99;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+form .action-button:hover, form .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(115, 115, 115, 0.6);
+}
+
+/* Заголовки */
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Приложение-планировщик</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/parameter_input.css') }}">
+</head>
+<body>
+<!-- multistep form -->
+
+<form id="msform" method="POST" action="/">
+    {{ form.csrf_token }}
+    <h1>Введите параметры станции</h1>
+    <fieldset>
+        <h2 class="fs-title">Координаты</h2>
+        <h3 class="fs-subtitle">Шаг 1</h3>
+        {{ form.latitude.label }} {{ form.latitude() }}
+        {{ form.longitude.label }} {{ form.longitude() }}
+        {{ form.altitude.label }} {{ form.altitude() }}
+        <input type="button" name="next" class="next action-button" value="Далее"/>
+    </fieldset>
+    <fieldset>
+        <h2 class="fs-title">Горизонт и минимальная кульминация</h2>
+        <h3 class="fs-subtitle">Шаг 2</h3>
+        {{ form.horizon.label }} {{ form.horizon() }}
+        {{ form.minimum_culmination.label }} {{ form.minimum_culmination() }}
+        <input type="button" name="previous" class="previous action-button" value="Назад"/>
+        <input type="button" name="next" class="next action-button" value="Далее"/>
+    </fieldset>
+    <fieldset>
+        <h2 class="fs-title">Длинна расписания</h2>
+        <h3 class="fs-subtitle">Шаг 3</h3>
+        {{ form.start_data.label }} {{ form.start_data() }}
+        {{ form.start_time.label }} {{ form.start_time() }}
+        {{ form.flight_length.label }} {{ form.flight_length() }}
+
+
+        <input type="button" name="previous" class="previous action-button" value="Назад"/>
+        <button type="submit">Готово</button>
+    </fieldset>
+</form>
+
+<script src="{{ url_for('static', filename='js/parameter_input.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Приложение-планировщик</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flight_table.css') }}">
+
+</head>
+<body>
+<h1>Расписание полётов</h1>
+<h4>Пересекающиеся полёты обозначены <span class="green">зелёным</span></h4>
+<table class="satellite_table">
+    <thead>
+    <tr>
+        <th><h1>Имя спутника</h1></th>
+        <th><h1>Время выхода из-за горизонта</h1></th>
+        <th><h1>Время захода за горизонт</h1></th>
+        <th><h1>Кульминация</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in table_data %}
+    <tr>
+        <!--При нажатии на название спутника (row[0]), начинает скачиваться его траектория-->
+        <td>
+            <a class="lightblue"
+
+               href="/download/{{row[0]}}/{{row[1]}}/{{row[2]}}/{{form.latitude.data}}/{{form.longitude.data}}/{{form.altitude.data}}"
+            >{{ row[0] }}</a></td>
+
+        <!--Проверка на пересекающиеся пролёты-->
+        {% if loop.index in intersection_data %}
+        <td class="green">{{ row[1] }}</td>
+        <td class="green">{{ row[2] }}</td>
+        <td class="green">{{ row[3] }}</td>
+
+        {% else %}
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        {% endif %}
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<!--Изменяем метод на GET и создаём кнопку-->
+<form method="GET" action="/" class="button-block">
+    {{ form.csrf_token }}
+    <div>
+        <button type="submit">Ввести параметры заново</button>
+    </div>
+</form>
+
+</body>
+</html>
