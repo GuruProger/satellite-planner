@@ -29,19 +29,19 @@
         <td>
             <a class="lightblue"
 
-               href="/download/{{row[0]}}/{{row[1]}}/{{row[2]}}/{{form.latitude.data}}/{{form.longitude.data}}/{{form.altitude.data}}"
-            >{{ row[0] }}</a></td>
+               href="/download/{{row.name}}/{{row.rise}}/{{row.fall}}/{{form.latitude.data}}/{{form.longitude.data}}/{{form.altitude.data}}"
+            >{{ row.name }}</a></td>
 
         <!--Проверка на пересекающиеся пролёты-->
         {% if loop.index in intersection_data %}
-        <td class="green">{{ row[1] }}</td>
-        <td class="green">{{ row[2] }}</td>
-        <td class="green">{{ row[3] }}</td>
+        <td class="green">{{ row.rise }}</td>
+        <td class="green">{{ row.fall }}</td>
+        <td class="green">{{ row.elevation }}</td>
 
         {% else %}
-        <td>{{ row[1] }}</td>
-        <td>{{ row[2] }}</td>
-        <td>{{ row[3] }}</td>
+        <td>{{ row.rise }}</td>
+        <td>{{ row.fall }}</td>
+        <td>{{ row.elevation }}</td>
         {% endif %}
 
     </tr>

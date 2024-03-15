@@ -11,7 +11,7 @@ for (var i = 1; i < fieldsets.length; i++) {
     fieldsets[i].style.display = "none";
 }
 
-// Обработчик нажатия кнопки "Next"
+// Обработчик нажатия кнопки "Далее"
 function next() {
     // Проверка, что мы не достигли последнего fieldset
     if (currentFieldset < fieldsets.length - 1) {
@@ -33,7 +33,7 @@ function next() {
     }
 }
 
-// Обработчик нажатия кнопки "Previous"
+// Обработчик нажатия кнопки "Назад"
 function previous() {
     // Проверка, что мы не находимся на первом fieldset
     if (currentFieldset > 0) {
@@ -46,7 +46,7 @@ function previous() {
     }
 }
 
-// Назначить обработчики событий кнопкам "Next" и "Previous"
+// Назначить обработчики событий кнопкам "Далее" и "Назад"
 for (var i = 0; i < nextButtons.length; i++) {
     nextButtons[i].addEventListener("click", next);
 }
