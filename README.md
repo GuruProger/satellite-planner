@@ -68,3 +68,4 @@ python main.py
     - `forms.py`: Модуль для работы с формами.
     - `sat_pass_model.py`: Модуль для работы с параметрами спутников.
     - `tle.txt`: Файл с данными о спутниках в формате TLE (Two-Line Element).
+    - `update_tle.py`: Модуль для обновления данных TLE.

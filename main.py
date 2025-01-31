@@ -1,10 +1,11 @@
 import io
 from datetime import datetime
+from flask import Flask, request, render_template, send_file
 from utils.forms import ParamsForm
 from utils import flight_calculation
-from flask import Flask, request, render_template, send_file
 from utils.flight_calculation import trajectory_satellite
 from utils.sat_pass_model import SatelliteParamModel
+from utils.update_tle import update_tle
 
 app = Flask(__name__)
 app.secret_key = '#$%^&*'
@@ -21,17 +22,17 @@ def home():
 				form=form) + '<script>alert("Заполните данные правильно")</script>')
 
 		# try:
-			# Отображение всех полётов
+		# Отображение всех полётов
 		flight_data, intersecting_flights = processing_values(form)
 		return render_template(
 			'flight_table.html',
 			form=form, table_data=flight_data, intersection_data=intersecting_flights)
 
-		# except:
-		# 	# Неверно заполнены данные
-		# 	return (
-		# 			render_template('parameter_input.html', form=form)
-		# 			+ '<script>alert("Заполните данные правильно")</script>')
+	# except:
+	# 	# Неверно заполнены данные
+	# 	return (
+	# 			render_template('parameter_input.html', form=form)
+	# 			+ '<script>alert("Заполните данные правильно")</script>')
 	# Если получаем GET запрос, то выводим форму
 	return render_template('parameter_input.html', form=form)
 
@@ -71,4 +72,5 @@ def processing_values(form: ParamsForm) -> tuple[str, str]:
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	update_tle()
+	app.run(debug=False)

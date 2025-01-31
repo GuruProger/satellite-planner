@@ -1,3 +1,4 @@
 pyorbital
 flask
 flask_wtf
+requests
